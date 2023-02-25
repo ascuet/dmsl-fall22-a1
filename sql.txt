@@ -1,0 +1,24 @@
+CREATE TABLE IF NOT EXISTS departments(
+    department_id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    established_at DATE NULL
+);
+CREATE TABLE IF NOT EXISTS courses(
+    course_code VARCHAR(30) NOT NULL PRIMARY KEY,
+    name VARCHAR(100) NOT NULL,
+    credit FLOAT,
+    type VARCHAR(20),
+    dept_id INT,
+    FOREIGN KEY (dept_id) REFERENCES departments(department_id)
+);
+CREATE TABLE IF NOT EXISTS users(
+    user_id INTEGER NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+    role VARCHAR(20),
+    password VARCHAR(100)
+);
+
+INSERT INTO users(name,email,role,password) 
+VALUES
+('KIngshuk Dhar', 'kingshuk@gmail.com', 'Admin', md5('123456'));
